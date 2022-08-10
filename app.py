@@ -9,14 +9,13 @@ import json
 import pickle
 import uuid
 import re
-import webbrowser
+
+html_string = '''☎️ <a href="https://api.whatsapp.com/send?phone=9198484819808" target="_blank">  Contact us </a>'''
+st.markdown(html_string,unsafe_allow_html=True)
 
 #Get input from user
 global user_id,token, TimeFrame, ticker, period
 
-whatsapp_url = "https://api.whatsapp.com/send?phone=9198484819808"
-if st.button("☎️ Contact us"):
-    webbrowser.open_new_tab(whatsapp_url)
 
 st.title("Tired of Scrapping Data? 😩")
 
@@ -141,4 +140,3 @@ if st.button('Submit'):
         key='download-csv',
         help = ticker + ' data available to download'
         )
-
