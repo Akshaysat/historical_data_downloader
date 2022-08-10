@@ -132,7 +132,7 @@ if st.button('Submit'):
         csv = df.to_csv().encode('utf-8')
 
         st.download_button(
-        "Download CSV",
+        "**Download CSV**",
         csv,
         ticker + "_" + period + ".csv",
         "text/csv",
