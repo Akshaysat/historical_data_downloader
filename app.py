@@ -132,7 +132,7 @@ if st.button('Submit'):
         csv = df.to_csv().encode('utf-8')
 
         st.download_button(
-        "**Download CSV**",
+        "Download CSV",
         csv,
         ticker + "_" + period + ".csv",
         "text/csv",
@@ -141,8 +141,8 @@ if st.button('Submit'):
         )
 
 
-    html_string2 = '''<p align = "center">❤️ <a href="https://bit.ly/3SAkFu9" target="_blank">  Spread the word </a></p>'''
-    st.markdown(html_string2,unsafe_allow_html=True)
+html_string2 = '''<p align = "center">❤️ <a href="https://bit.ly/3SAkFu9" target="_blank">  Spread the word </a></p>'''
+st.markdown(html_string2,unsafe_allow_html=True)
 
-    html_string1 = '''<p align = "center">☎️ <a href="https://api.whatsapp.com/send?phone=9198484819808" target="_blank">  Contact us </a></p>'''
-    st.markdown(html_string1,unsafe_allow_html=True)
+html_string1 = '''<p align = "center">☎️ <a href="https://api.whatsapp.com/send?phone=9198484819808" target="_blank">  Contact us </a></p>'''
+st.markdown(html_string1,unsafe_allow_html=True)
