@@ -10,6 +10,8 @@ import pickle
 import uuid
 import re
 
+st.set_page_config(layout="centered", page_icon="💾", page_title="Historical data downloader")
+
 html_string = '''☎️ <a href="https://api.whatsapp.com/send?phone=9198484819808" target="_blank">  Contact us </a>'''
 st.markdown(html_string,unsafe_allow_html=True)
 
