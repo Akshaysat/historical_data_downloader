@@ -12,12 +12,6 @@ import re
 
 st.set_page_config(layout="centered", page_icon="💾", page_title="Historical data downloader")
 
-html_string1 = '''☎️ <a href="https://api.whatsapp.com/send?phone=9198484819808" target="_blank">  Contact us </a>'''
-st.markdown(html_string1,unsafe_allow_html=True)
-
-html_string2 = '''❤️ <a href="https://bit.ly/3SAkFu9" target="_blank">  Spread the word </a>'''
-st.markdown(html_string2,unsafe_allow_html=True)
-
 #Get input from user
 global user_id,token, TimeFrame, ticker, period
 
@@ -145,3 +139,10 @@ if st.button('Submit'):
         key='download-csv',
         help = ticker + ' data available to download'
         )
+
+    
+html_string1 = '''☎️ <a href="https://api.whatsapp.com/send?phone=9198484819808" target="_blank">  Contact us </a>'''
+st.markdown(html_string1,unsafe_allow_html=True)
+
+html_string2 = '''❤️ <a href="https://bit.ly/3SAkFu9" target="_blank">  Spread the word </a>'''
+st.markdown(html_string2,unsafe_allow_html=True)
