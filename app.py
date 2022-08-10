@@ -12,8 +12,11 @@ import re
 
 st.set_page_config(layout="centered", page_icon="💾", page_title="Historical data downloader")
 
-html_string = '''☎️ <a href="https://api.whatsapp.com/send?phone=9198484819808" target="_blank">  Contact us </a>'''
-st.markdown(html_string,unsafe_allow_html=True)
+html_string1 = '''☎️ <a href="https://api.whatsapp.com/send?phone=9198484819808" target="_blank">  Contact us </a>'''
+st.markdown(html_string1,unsafe_allow_html=True)
+
+html_string2 = '''❤️ <a href="https://wa.me/?text=Hi%20buddy%2C%0ACheck%20out%20this%20amazing%20tool%20to%20download%20historical%20stock%20data%20for%20free!%0Ahttps%3A%2F%2Fakshaysat-historical-data-downloader-app-0n3irw.streamlitapp.com%2F" target="_blank">  Spread the word </a>'''
+st.markdown(html_string1,unsafe_allow_html=True)
 
 #Get input from user
 global user_id,token, TimeFrame, ticker, period
