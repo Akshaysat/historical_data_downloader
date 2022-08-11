@@ -16,7 +16,7 @@ st.set_page_config(layout="centered", page_icon="💾", page_title="Historical d
 global user_id,token, TimeFrame, ticker, period
 
 
-st.title("Tired of Scrapping Data? 😲")
+st.title("Tired of Scrapping Data? 🤯")
 
 st.write("➡️ Use this tool to download historical data of any stock/index for **PHREEEE** !!!")
 
@@ -143,7 +143,7 @@ if st.button('Submit'):
         )
 
 
-html_string2 = '''<p align = "center">❤️ <a href="https://bit.ly/3SAkFu9" target="_blank">  Spread the word </a></p>'''
+html_string2 = '''<p align = "center">❤️ <a href="https://bit.ly/3SAkFu9" target="_blank">  Spread The Word </a></p>'''
 st.markdown(html_string2,unsafe_allow_html=True)
 
 html_string1 = '''<p align = "center">☎️ <a href="https://api.whatsapp.com/send?phone=918484819808" target="_blank">  Contact us </a></p>'''
