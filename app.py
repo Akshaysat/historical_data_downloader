@@ -143,8 +143,8 @@ if st.button('Submit'):
         )
 
 
-html_string2 = '''<p align = "center">❤️ <a href="https://bit.ly/3SAkFu9" target="_blank">  Spread The Word </a></p>'''
+html_string2 = '''<p align = "center">❤️ <a href="https://ctt.ac/4A0Vh" target="_blank">  Spread The Word </a></p>'''
 st.markdown(html_string2,unsafe_allow_html=True)
 
-html_string1 = '''<p align = "center">☎️ <a href="https://api.whatsapp.com/send?phone=918484819808" target="_blank">  Contact us </a></p>'''
-st.markdown(html_string1,unsafe_allow_html=True)
+# html_string1 = '''<p align = "center">☎️ <a href="https://api.whatsapp.com/send?phone=918484819808" target="_blank">  Contact us </a></p>'''
+# st.markdown(html_string1,unsafe_allow_html=True)
