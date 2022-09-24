@@ -131,17 +131,19 @@ if st.button('Submit'):
     with st.spinner('abra-ca-dabra 🎩 ... '):
         
         df = scrap_data(ticker,period)
-        csv = df.to_csv().encode('utf-8')
-
-        st.download_button(
-        "Download CSV",
-        csv,
-        ticker + "_" + period + ".csv",
-        "text/csv",
-        key='download-csv',
-        help = ticker + ' data available to download'
-        )
-
+        # csv = df.to_csv().encode('utf-8')
+        # st.download_button("Download CSV",csv,ticker + "_" + period + ".csv", "text/csv", key='download-csv',help = ticker + ' data available to download')
+        
+        compression_opts = dict(method='zip', archive_name= ticker + "_" + period + ".csv")  
+        zip = df.to_csv(ticker + "_" + period + ".zip", compression=compression_opts)
+        # st.download_button("Download CSV",zip,"out.zip", "application/zip", key='download-zip')
+        with open(ticker + "_" + period + ".zip", "rb") as fp:
+            btn = st.download_button(
+                label="Download zip",
+                data=fp,
+                file_name=ticker + "_" + period + ".zip",
+                mime="application/zip"
+            )
 
 html_string2 = '''<p align = "center">❤️ <a href="https://ctt.ac/4A0Vh" target="_blank">  Spread The Word </a></p>'''
 st.markdown(html_string2,unsafe_allow_html=True)
