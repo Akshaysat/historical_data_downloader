@@ -9,6 +9,12 @@ import json
 import pickle
 import uuid
 import re
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+from PIL import Image
 
 st.set_page_config(layout="centered", page_icon="💾", page_title="Historical data downloader")
 
@@ -23,6 +29,8 @@ st.write("➡️ Use this tool to download historical data of any stock/index fo
 st.write("➡️ Data available from 01 Jan 2015 onwards")
 
 st.write("➡️ FNO data available only for current expiry series")
+
+st.write("➡️ Data sent to your inbox within 2 mins")
 
 #Download historical stock data for FREE ")
 
@@ -64,6 +72,7 @@ def get_data(period, start_date,end_date,symbol):
     data = response.json()['data']['candles']
     return data
 
+#Function to scrap data
 def scrap_data(scrip_name,period):
     
     scrip_name = str(scrip_name)
@@ -125,8 +134,9 @@ TimeFrame = ['minute','3minute','5minute','10minute','15minute','30minute','60mi
 
 ticker = st.selectbox('Select the Symbol',stocks, help = 'The scrip name of the stock/index/futures/option instrument')
 period = st.selectbox('Select the TimeFrame',TimeFrame, help = 'The timeframe of the data that you are looking for')
+email = st.text_input('Enter you Email', help = 'get the data directly in your inbox after processing')
 
-if st.button('Submit'):
+if st.button('Email Me'):
     ##Download Widget
     with st.spinner('abra-ca-dabra 🎩 ... '):
         
@@ -136,17 +146,50 @@ if st.button('Submit'):
         
         compression_opts = dict(method='zip', archive_name= ticker + "_" + period + ".csv")  
         zip = df.to_csv(ticker + "_" + period + ".zip", compression=compression_opts)
-        # st.download_button("Download CSV",zip,"out.zip", "application/zip", key='download-zip')
-        with open(ticker + "_" + period + ".zip", "rb") as fp:
-            btn = st.download_button(
-                label="Download zip",
-                data=fp,
-                file_name=ticker + "_" + period + ".zip",
-                mime="application/zip"
-            )
+
+        #download button
+        # with open(ticker + "_" + period + ".zip", "rb") as fp:
+        #     btn = st.download_button(
+        #         label="Download zip",
+        #         data=fp,
+        #         file_name=ticker + "_" + period + ".zip",
+        #         mime="application/zip"
+        #     )
+        
+        #email the zip file
+        fromaddr = "analystindie@gmail.com"
+        toaddr = email
+        msg = MIMEMultipart()
+        msg['From'] = fromaddr
+        msg['To'] = toaddr
+        msg['Subject'] = "Data Available for download"
+        body = "Hey there,\r\rThe data is now available for download. Please download the zip file in the attachement below.\r\rPlease reply to this email if you loved using the tool or have any feedbacks :)"
+        msg.attach(MIMEText(body, 'plain'))
+        filename = ticker + "_" + period + ".zip"
+        attachment = open(ticker + "_" + period + ".zip", "rb")
+        p = MIMEBase('application', 'octet-stream')
+        p.set_payload((attachment).read())
+        encoders.encode_base64(p)
+        p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+        msg.attach(p)
+        
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        s.starttls()
+        #s.login("sharonsdelgado13@gmail.com", "qprfpgxelokrreel")
+        s.login("analystindie@gmail.com", "homzblukojvhmqwk")
+        
+        text = msg.as_string()
+        s.sendmail(fromaddr, toaddr, text)
+        s.quit()
+
+        image = Image.open('success_meme.jpg')
+        #new_image = image.resize((600, 400))
+        st.image(image, caption="Please check your spam folder, if you did not receive the email in your inbox")
+
 
 html_string2 = '''<p align = "center">❤️ <a href="https://ctt.ac/4A0Vh" target="_blank">  Spread The Word </a></p>'''
 st.markdown(html_string2,unsafe_allow_html=True)
 
-# html_string1 = '''<p align = "center">☎️ <a href="https://api.whatsapp.com/send?phone=918484819808" target="_blank">  Contact us </a></p>'''
-# st.markdown(html_string1,unsafe_allow_html=True)
+
+html_string1 = '''<p align = "center">☎️ <a href = "mailto: analystindie@gmail.com">Contact Us</a></p>'''
+st.markdown(html_string1,unsafe_allow_html=True)
