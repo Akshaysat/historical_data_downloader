@@ -162,8 +162,8 @@ if st.button('Email Me'):
         msg = MIMEMultipart()
         msg['From'] = fromaddr
         msg['To'] = toaddr
-        msg['Subject'] = "Data Available for download"
-        body = "Hey there,\r\rThe data is now available for download. Please download the zip file in the attachement below.\r\rPlease reply to this email if you loved using the tool or have any feedbacks :)"
+        msg['Subject'] = "Data Available Now"
+        body = "Hey there,\r\rPlease find the zip file in the attachement below.\r\rPlease reply to this email if you loved using the tool or have any feedbacks :)"
         msg.attach(MIMEText(body, 'plain'))
         filename = ticker + "_" + period + ".zip"
         attachment = open(ticker + "_" + period + ".zip", "rb")
