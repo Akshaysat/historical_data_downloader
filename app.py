@@ -155,7 +155,7 @@ if st.button('Email Me'):
         #         file_name=ticker + "_" + period + ".zip",
         #         mime="application/zip"
         #     )
-        
+    
         #email the zip file
         fromaddr = "analystindie@gmail.com"
         toaddr = email
