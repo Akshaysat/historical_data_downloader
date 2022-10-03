@@ -1,3 +1,4 @@
+import symbol
 import time 
 import requests
 import json
@@ -6,9 +7,6 @@ import pandas as pd
 import streamlit as st
 import base64
 import json
-import pickle
-import uuid
-import re
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -21,6 +19,9 @@ st.set_page_config(layout="centered", page_icon="💾", page_title="Historical d
 #Get input from user
 global user_id,token, TimeFrame, ticker, period
 
+#set today's date and time
+curr_time_dec = time.localtime(time.time())
+date = time.strftime("%Y-%m-%d", curr_time_dec)
 
 st.title("Tired of Scrapping Data? 🤯")
 
@@ -182,9 +183,19 @@ if st.button('Email Me'):
         s.sendmail(fromaddr, toaddr, text)
         s.quit()
 
-        image = Image.open('success_meme.jpg')
-        #new_image = image.resize((600, 400))
-        st.image(image, caption="Please check your spam folder, if you did not receive the email in your inbox")
+        #store data in database
+        url_email = "https://3749e8lxlf.execute-api.ap-south-1.amazonaws.com/"
+        payload_email = {"query_date" : date, "tool_name" : "tool-historical-data-downloader", "Segment" : segment, "Symbol" : ticker, "Period" : period, "Email" : email}
+        headers_email = {'Content-Type': 'text/plain'}
+        response = requests.request("POST", url_email, headers=headers_email, data = json.dumps(payload_email))
+
+        #response text
+        st.subheader("✔️ Email Sent Successfully")
+        st.caption("*Note: Please check your spam folder, if you did not receive the email in your inbox*")
+        
+        # image = Image.open('success_meme.jpg')
+        # #new_image = image.resize((300, 200))
+        # st.image(image, caption="Please check your spam folder, if you did not receive the email in your inbox")
 
 
 html_string2 = '''<p align = "center">❤️ <a href="https://ctt.ac/4A0Vh" target="_blank">  Spread The Word </a></p>'''
