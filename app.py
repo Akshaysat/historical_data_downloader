@@ -26,17 +26,17 @@ global user_id, token, TimeFrame, ticker, period
 curr_time_dec = time.localtime(time.time())
 date = time.strftime("%Y-%m-%d", curr_time_dec)
 
-st.title("Tired of Scrapping Data? 🤯")
+st.title("Tired of Scrapping Data?🤯")
 
-st.write(
-    "➡️ Use this tool to download historical data of any stock/index for **PHREEEE** !!!"
-)
+st.write("➡️ Use this tool to get historical data of stock/index for **PHREEEE** !!!")
 
 st.write("➡️ Data available from 01 Jan 2015 onwards")
 
 st.write("➡️ FNO data available only for current expiry series")
 
 st.write("➡️ Data sent to your inbox within 2 mins")
+
+st.write("-------")
 
 # Download historical stock data for FREE ")
 
