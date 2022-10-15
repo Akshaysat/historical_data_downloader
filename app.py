@@ -38,10 +38,7 @@ st.write("➡️ Data sent to your inbox within 2 mins")
 
 st.write("-------")
 
-# Download historical stock data for FREE ")
-
-# user_id = st.text_input('Enter your Zerodha Kite ID:')
-# token = st.text_input('Enter enctoken: ') #(watch video below to learn how to get your enctoken):
+# get the zerodha enctoken
 url = "https://68o9pf66q0.execute-api.ap-south-1.amazonaws.com/"
 payload = {}
 headers = {}
