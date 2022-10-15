@@ -47,7 +47,7 @@ payload = {}
 headers = {}
 response = requests.request("GET", url, headers=headers, data=payload)
 token = response.text
-user_id = "VT5229"
+user_id = st.secrets["User"]["user_id"]
 
 # Function to get last 60 days of data
 def get_data(period, start_date, end_date, symbol):
@@ -183,9 +183,10 @@ email = st.text_input("Enter you Email", help="Don't worry, We will never spam y
 if st.button("Email me the data"):
 
     if check(email) == "valid":
-        t1 = time.time()
+
         ##Download Widget
         with st.spinner("abra-ca-dabra 🎩 ... "):
+
             df = scrap_data(ticker, period)
             # csv = df.to_csv().encode('utf-8')
             # st.download_button("Download CSV",csv,ticker + "_" + period + ".csv", "text/csv", key='download-csv',help = ticker + ' data available to download')
