@@ -77,7 +77,7 @@ def get_data(period, start_date, end_date, symbol):
     # }
 
     response = requests.request("GET", url, headers=headers, data=payload)
-    st.write(response.get("content-type"))
+    st.write(response.headers["content-type"])
     st.write(response.text)
     data = response.json()["data"]["candles"]
     return data
