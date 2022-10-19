@@ -114,10 +114,23 @@ def scrap_data(scrip_name, period):
 
         a = get_data(period, start_date, end_date, scrip_name)
 
-        if a == "fail" and err_count <= 5:
-            err_count += 1
+        if a == "fail":
+
             time.sleep(1)
-            continue
+            err_count += 1
+
+            if err_count > 5:
+                diff = divmod((dt.datetime.today() - end).total_seconds(), 86400)[0]
+
+                if diff < 0:
+                    start = end + dt.timedelta(1)
+                    end = start + dt.timedelta(abs(diff))
+                else:
+                    start = end + dt.timedelta(1)
+                    end = start + dt.timedelta(60)
+
+            else:
+                continue
 
         else:
             data = pd.DataFrame(
