@@ -107,6 +107,7 @@ def scrap_data(scrip_name, period):
         a = get_data(period, start_date, end_date, scrip_name)
 
         if a == "text/html; charset=UTF-8":
+            time.sleep(5)
             continue
         else:
             data = pd.DataFrame(
