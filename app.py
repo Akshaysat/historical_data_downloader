@@ -104,11 +104,13 @@ def scrap_data(scrip_name, period):
 
         start_date = dt.datetime.strftime(start, "%Y-%m-%d")
         end_date = dt.datetime.strftime(end, "%Y-%m-%d")
+        st.write(start_date)
+        st.write(start_date)
 
         a = get_data(period, start_date, end_date, scrip_name)
 
         if a == "text/html; charset=UTF-8":
-            time.sleep(1)
+            time.sleep(5)
             continue
         else:
             data = pd.DataFrame(
