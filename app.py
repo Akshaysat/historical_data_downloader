@@ -239,7 +239,7 @@ if st.button("Email me the data"):
 
             s = smtplib.SMTP("smtp.gmail.com", 587)
             s.starttls()
-            s.login("analystindie@gmail.com", "qpsiclhfenvyaife")
+            s.login("analystindie@gmail.com", st.secrets["Smtp"]["password"])
 
             text = msg.as_string()
             s.sendmail(fromaddr, toaddr, text)
