@@ -77,8 +77,8 @@ def get_data(period, start_date, end_date, symbol):
     # }
 
     response = requests.request("GET", url, headers=headers, data=payload)
-    st.write(response.headers["content-type"])
-    st.write(response.text)
+    # st.write(response.headers["content-type"])
+    # st.write(response.text)
 
     # this condition was added because Zerodha started sending html data instead of Json data when requests were made at this frequency
     if (
@@ -109,8 +109,6 @@ def scrap_data(scrip_name, period):
 
         start_date = dt.datetime.strftime(start, "%Y-%m-%d")
         end_date = dt.datetime.strftime(end, "%Y-%m-%d")
-        st.write(start_date)
-        st.write(start_date)
 
         a = get_data(period, start_date, end_date, scrip_name)
 
