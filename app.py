@@ -114,7 +114,7 @@ def scrap_data(scrip_name, period):
 
         a = get_data(period, start_date, end_date, scrip_name)
 
-        if a == "fail" or err_count <= 5:
+        if a == "fail" and err_count <= 5:
             err_count += 1
             time.sleep(1)
             continue
