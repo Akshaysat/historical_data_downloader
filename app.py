@@ -114,11 +114,13 @@ def scrap_data(scrip_name, period):
 
         a = get_data(period, start_date, end_date, scrip_name)
 
+        # condition if we do not receive the data from the API
         if a == "fail":
 
             time.sleep(1)
             err_count += 1
 
+            # if the data does not come after 5 iterations, then switch to the next date
             if err_count > 5:
                 diff = divmod((dt.datetime.today() - end).total_seconds(), 86400)[0]
 
@@ -132,6 +134,7 @@ def scrap_data(scrip_name, period):
             else:
                 continue
 
+        # if API gave the correct API response
         else:
             data = pd.DataFrame(
                 a, columns=["DateTime", "Open", "High", "Low", "Close", "Volume", "OI"]
