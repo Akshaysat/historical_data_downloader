@@ -81,7 +81,10 @@ def get_data(period, start_date, end_date, symbol):
     st.write(response.text)
 
     # this condition was added because Zerodha started sending html data instead of Json data when requests were made at this frequency
-    if response.headers["content-type"] == "text/html; charset=UTF-8":
+    if (
+        response.headers["content-type"] == "text/html; charset=UTF-8"
+        or len(response.json()["data"]["candles"]) == 0
+    ):
         return response.headers["content-type"]
     else:
         data = response.json()["data"]["candles"]
