@@ -79,8 +79,12 @@ def get_data(period, start_date, end_date, symbol):
     response = requests.request("GET", url, headers=headers, data=payload)
     st.write(response.headers["content-type"])
     st.write(response.text)
-    data = response.json()["data"]["candles"]
-    return data
+
+    if response.headers["content-type"] == "text/html; charset=UTF-8":
+        return response.headers["content-type"]
+    else:
+        data = response.json()["data"]["candles"]
+        return data
 
 
 # Function to scrap data
@@ -102,21 +106,24 @@ def scrap_data(scrip_name, period):
 
         a = get_data(period, start_date, end_date, scrip_name)
 
-        data = pd.DataFrame(
-            a, columns=["DateTime", "Open", "High", "Low", "Close", "Volume", "OI"]
-        )
-        data.drop(columns=["OI"], inplace=True)
-
-        df = df.append(data)
-
-        diff = divmod((dt.datetime.today() - end).total_seconds(), 86400)[0]
-
-        if diff < 0:
-            start = end + dt.timedelta(1)
-            end = start + dt.timedelta(abs(diff))
+        if a == "text/html; charset=UTF-8":
+            continue
         else:
-            start = end + dt.timedelta(1)
-            end = start + dt.timedelta(60)
+            data = pd.DataFrame(
+                a, columns=["DateTime", "Open", "High", "Low", "Close", "Volume", "OI"]
+            )
+            data.drop(columns=["OI"], inplace=True)
+
+            df = df.append(data)
+
+            diff = divmod((dt.datetime.today() - end).total_seconds(), 86400)[0]
+
+            if diff < 0:
+                start = end + dt.timedelta(1)
+                end = start + dt.timedelta(abs(diff))
+            else:
+                start = end + dt.timedelta(1)
+                end = start + dt.timedelta(60)
 
     # Transform the DataFrame
     df.insert(1, "Date", 0)
