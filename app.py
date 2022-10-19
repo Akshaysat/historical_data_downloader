@@ -94,6 +94,8 @@ def get_data(period, start_date, end_date, symbol):
 # Function to scrap data
 def scrap_data(scrip_name, period):
 
+    err_count = 0
+
     scrip_name = str(scrip_name)
     df = pd.DataFrame(columns=["DateTime", "Open", "High", "Low", "Close", "Volume"])
 
@@ -112,9 +114,11 @@ def scrap_data(scrip_name, period):
 
         a = get_data(period, start_date, end_date, scrip_name)
 
-        if a == "fail":
+        if a == "fail" or err_count <= 5:
+            err_count += 1
             time.sleep(1)
             continue
+
         else:
             data = pd.DataFrame(
                 a, columns=["DateTime", "Open", "High", "Low", "Close", "Volume", "OI"]
