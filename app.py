@@ -85,7 +85,7 @@ def get_data(period, start_date, end_date, symbol):
         response.headers["content-type"] == "text/html; charset=UTF-8"
         or len(response.json()["data"]["candles"]) == 0
     ):
-        return response.headers["content-type"]
+        return "fail"
     else:
         data = response.json()["data"]["candles"]
         return data
@@ -112,7 +112,7 @@ def scrap_data(scrip_name, period):
 
         a = get_data(period, start_date, end_date, scrip_name)
 
-        if a == "text/html; charset=UTF-8":
+        if a == "fail":
             time.sleep(5)
             continue
         else:
