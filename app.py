@@ -239,8 +239,7 @@ if st.button("Email me the data"):
 
             s = smtplib.SMTP("smtp.gmail.com", 587)
             s.starttls()
-            # s.login("sharonsdelgado13@gmail.com", "qprfpgxelokrreel")
-            s.login("analystindie@gmail.com", "homzblukojvhmqwk")
+            s.login("analystindie@gmail.com", "qpsiclhfenvyaife")
 
             text = msg.as_string()
             s.sendmail(fromaddr, toaddr, text)
