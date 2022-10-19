@@ -113,7 +113,7 @@ def scrap_data(scrip_name, period):
         a = get_data(period, start_date, end_date, scrip_name)
 
         if a == "fail":
-            time.sleep(5)
+            time.sleep(1)
             continue
         else:
             data = pd.DataFrame(
