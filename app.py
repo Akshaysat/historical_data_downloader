@@ -60,8 +60,8 @@ def get_data(period, start_date, end_date, symbol):
     }
 
     response = requests.request("GET", url, headers=headers, data=payload)
-    st.write(response.headers["content-type"])
-    st.write(response.text)
+    # st.write(response.headers["content-type"])
+    # st.write(response.text)
 
     # this condition was added because Zerodha started sending html data instead of Json data when requests were made at this frequency
     if (
@@ -100,7 +100,7 @@ def scrap_data(scrip_name, period):
 
             time.sleep(1)
             err_count += 1
-            st.write(err_count)
+            # st.write(err_count)
 
             # if the data does not come after 5 iterations, then switch to the next date
             if err_count > 5:
@@ -118,7 +118,6 @@ def scrap_data(scrip_name, period):
 
         # if API gave the correct API response
         else:
-
             err_count = 0
 
             data = pd.DataFrame(
@@ -208,7 +207,7 @@ if st.button("Email me the data"):
     if check(email) == "valid":
 
         ##Download Widget
-        with st.spinner("abra-ca-dabra 🎩 ... "):
+        with st.spinner("abra-ca-dabra 🎩 ..."):
 
             df = scrap_data(ticker, period)
             # csv = df.to_csv().encode('utf-8')
