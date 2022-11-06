@@ -100,6 +100,7 @@ def scrap_data(scrip_name, period):
 
             time.sleep(1)
             err_count += 1
+            st.write(err_count)
 
             # if the data does not come after 5 iterations, then switch to the next date
             if err_count > 5:
