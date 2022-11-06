@@ -118,6 +118,9 @@ def scrap_data(scrip_name, period):
 
         # if API gave the correct API response
         else:
+
+            err_count = 0
+
             data = pd.DataFrame(
                 a, columns=["DateTime", "Open", "High", "Low", "Close", "Volume", "OI"]
             )
