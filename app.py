@@ -19,6 +19,16 @@ st.set_page_config(
     layout="centered", page_icon="💾", page_title="Historical data downloader"
 )
 
+# hide streamlit branding and hamburger menu
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+
 # Get input from user
 global user_id, token, TimeFrame, ticker, period
 
