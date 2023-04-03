@@ -49,7 +49,7 @@ st.write("➡️ Data sent to your inbox within 2 mins")
 st.write("-------")
 
 # get the zerodha enctoken
-url = "https://68o9pf66q0.execute-api.ap-south-1.amazonaws.com/"
+url = "https://4f1y5wxfde.execute-api.ap-south-1.amazonaws.com/"
 payload = {}
 headers = {}
 response = requests.request("GET", url, headers=headers, data=payload)
