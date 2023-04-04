@@ -293,15 +293,15 @@ response = requests.request(
 
 stats_data = json.loads(response.text)
 
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
+
+# with col1:
+#     st.metric("Unique User Count", f'{stats_data["total_unique_users"]} users')
 
 with col1:
-    st.metric("Unique User Count", f'{stats_data["total_unique_users"]} users')
-
-with col2:
     st.metric("Usage Count", f'{stats_data["total_times_used"]} times')
 
-with col3:
+with col2:
     st.metric("Time Saved", f'{stats_data["total_hrs_saved"]} hrs')
 
 st.write("")
@@ -310,7 +310,7 @@ st.write("")
 st.write("")
 
 st.markdown(
-    "<h5 style='text-align: center; color: white;'>If you've found this tool valuable, kindly consider donating by buying me a book. Your contribution will fuel my learning journey and provide you with even better resources in the future 😇</h5>",
+    "<h6 style='text-align: center; color: white;'>If you've found this tool valuable, kindly consider donating by buying me a book. Your contribution will fuel my learning journey and provide you with even better resources in the future 😇</h6>",
     unsafe_allow_html=True,
 )
 
