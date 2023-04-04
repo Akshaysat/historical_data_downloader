@@ -16,7 +16,7 @@ from PIL import Image
 import re
 
 st.set_page_config(
-    layout="centered", page_icon="👨‍💻", page_title="Historical data downloader"
+    layout="centered", page_icon="", page_title="Historical data downloader"
 )
 
 # hide streamlit branding and hamburger menu
