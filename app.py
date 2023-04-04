@@ -16,7 +16,7 @@ from PIL import Image
 import re
 
 st.set_page_config(
-    layout="centered", page_icon="💾", page_title="Historical data downloader"
+    layout="centered", page_icon="👨‍💻", page_title="Historical data downloader"
 )
 
 # hide streamlit branding and hamburger menu
@@ -220,8 +220,6 @@ if st.button("Email me the data"):
         with st.spinner("abra-ca-dabra 🎩 ..."):
 
             df = scrap_data(ticker, period)
-            # csv = df.to_csv().encode('utf-8')
-            # st.download_button("Download CSV",csv,ticker + "_" + period + ".csv", "text/csv", key='download-csv',help = ticker + ' data available to download')
 
             compression_opts = dict(
                 method="zip", archive_name=ticker + "_" + period + ".csv"
@@ -229,15 +227,6 @@ if st.button("Email me the data"):
             zip = df.to_csv(
                 ticker + "_" + period + ".zip", compression=compression_opts
             )
-
-            # download button
-            # with open(ticker + "_" + period + ".zip", "rb") as fp:
-            #     btn = st.download_button(
-            #         label="Download zip",
-            #         data=fp,
-            #         file_name=ticker + "_" + period + ".zip",
-            #         mime="application/zip"
-            #     )
 
             # email the zip file
             fromaddr = "analystindie@gmail.com"
@@ -265,7 +254,9 @@ if st.button("Email me the data"):
             s.quit()
 
             # store data in database
-            url_email = "https://3749e8lxlf.execute-api.ap-south-1.amazonaws.com/"
+            # url_email = "https://3749e8lxlf.execute-api.ap-south-1.amazonaws.com/"
+            url_email = "https://prit5qpff1.execute-api.ap-south-1.amazonaws.com/"
+
             payload_email = {
                 "query_date": date,
                 "tool_name": "tool-historical-data-downloader",
@@ -287,9 +278,51 @@ if st.button("Email me the data"):
 
     else:
         st.error(" ❌ Please enter a valid email address")
-html_string2 = """<p align = "center">❤️ <a href="https://ctt.ac/4A0Vh" target="_blank">  Spread The Word </a></p>"""
-st.markdown(html_string2, unsafe_allow_html=True)
+
+st.write("---")
+st.subheader("App Stats")
+
+# Fetch stats data
+url_email = "https://prit5qpff1.execute-api.ap-south-1.amazonaws.com/stats"
+
+payload_email = {"tool_name": "tool-historical-data-downloader"}
+headers_email = {"Content-Type": "text/plain"}
+response = requests.request(
+    "POST", url_email, headers=headers_email, data=json.dumps(payload_email)
+)
+
+stats_data = json.loads(response.text)
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric("Unique User Count", f'{stats_data["total_unique_users"]} users')
+
+with col2:
+    st.metric("Usage Count", f'{stats_data["total_times_used"]} times')
+
+with col3:
+    st.metric("Time Saved", f'{stats_data["total_hrs_saved"]} hrs')
+
+st.write("")
+st.write("----")
+st.write("")
+st.write("")
+
+st.markdown(
+    "<h5 style='text-align: center; color: white;'>If you've found this tool valuable, kindly consider donating by buying me a book. Your contribution will fuel my learning journey and provide you with even better resources in the future 😇</h5>",
+    unsafe_allow_html=True,
+)
+
+st.write("")
+
+buy_me_a_coffee_string = """<p align = "center"> <a href="https://www.buymeacoffee.com/7paise"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Book&emoji=📚&slug=7paise&button_colour=BD5FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>"""
+st.markdown(buy_me_a_coffee_string, unsafe_allow_html=True)
 
 
-html_string1 = """<p align = "center">☎️ <a href = "mailto: analystindie@gmail.com">Contact Us</a></p>"""
-st.markdown(html_string1, unsafe_allow_html=True)
+# html_string2 = """<p align = "center">❤️ <a href="https://ctt.ac/4A0Vh" target="_blank">  Spread The Word </a></p>"""
+# st.markdown(html_string2, unsafe_allow_html=True)
+
+
+# html_string1 = """<p align = "center">☎️ <a href = "mailto: analystindie@gmail.com">Contact Us</a></p>"""
+# st.markdown(html_string1, unsafe_allow_html=True)
