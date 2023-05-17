@@ -299,10 +299,10 @@ col1, col2 = st.columns(2)
 #     st.metric("Unique User Count", f'{stats_data["total_unique_users"]} users')
 
 with col1:
-    st.metric("Usage Count", f'{stats_data["total_times_used"]} times')
+    st.metric("Usage Count #️⃣", f'{stats_data["total_times_used"]} times')
 
 with col2:
-    st.metric("Time Saved", f'{stats_data["total_hrs_saved"]} hrs')
+    st.metric("Time Saved ⌛", f'{stats_data["total_hrs_saved"]} hrs')
 
 st.write("")
 st.write("----")
