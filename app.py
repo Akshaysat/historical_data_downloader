@@ -307,17 +307,26 @@ with col2:
 st.write("")
 st.write("----")
 st.write("")
-st.write("")
+
 
 st.markdown(
-    "<h6 style='text-align: center; color: white;'>If you've found this tool valuable, kindly consider donating by buying me a book. Your contribution will fuel my learning journey and provide you with even better resources in the future 😇</h6>",
+    "<h4 style='text-align: center; color: white;'>Need help Backtesting or Automating your trading strategy?</h6>",
     unsafe_allow_html=True,
 )
-
 st.write("")
+whatsapp_string = """<p align = "center"> <a href="https://api.whatsapp.com/send/?phone=918484819808&text=Hey%20there,%20I%20need%20some%20help%20with%20my%20trading%20strategy!"><img src="https://scontent.fdel1-2.fna.fbcdn.net/v/t39.8562-6/302524815_3448899778679909_2843186333341006023_n.png?_nc_cat=104&ccb=1-7&_nc_sid=6825c5&_nc_ohc=VZv0luOGD5YAX8qcUUV&_nc_ht=scontent.fdel1-2.fna&oh=00_AfAE6a0QJ_SGizefaKMGcapI71Jt-AA83l4gI_NjNVVo0Q&oe=64776B8F" /></a>"""
+st.markdown(whatsapp_string, unsafe_allow_html=True)
 
-buy_me_a_coffee_string = """<p align = "center"> <a href="https://www.buymeacoffee.com/7paise"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Book&emoji=📚&slug=7paise&button_colour=BD5FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>"""
-st.markdown(buy_me_a_coffee_string, unsafe_allow_html=True)
+
+# st.markdown(
+#     "<h6 style='text-align: center; color: white;'>If you've found this tool valuable, kindly consider donating by buying me a book. Your contribution will fuel my learning journey and provide you with even better resources in the future 😇</h6>",
+#     unsafe_allow_html=True,
+# )
+
+# st.write("")
+
+# buy_me_a_coffee_string = """<p align = "center"> <a href="https://www.buymeacoffee.com/7paise"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Book&emoji=📚&slug=7paise&button_colour=BD5FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>"""
+# st.markdown(buy_me_a_coffee_string, unsafe_allow_html=True)
 
 
 # html_string2 = """<p align = "center">❤️ <a href="https://ctt.ac/4A0Vh" target="_blank">  Spread The Word </a></p>"""
