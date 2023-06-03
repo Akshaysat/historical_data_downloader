@@ -314,7 +314,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.write("")
-whatsapp_string = """<p align = "center"> <a href="https://api.whatsapp.com/send/?phone=918484819808&text=Hey%20there,%20I%20need%20some%20help%20with%20my%20trading%20strategy!"><img src="https://scontent.fdel1-2.fna.fbcdn.net/v/t39.8562-6/302524815_3448899778679909_2843186333341006023_n.png?_nc_cat=104&ccb=1-7&_nc_sid=6825c5&_nc_ohc=VZv0luOGD5YAX8qcUUV&_nc_ht=scontent.fdel1-2.fna&oh=00_AfAE6a0QJ_SGizefaKMGcapI71Jt-AA83l4gI_NjNVVo0Q&oe=64776B8F" /></a>"""
+whatsapp_string = """<p align = "center"> <a href="https://api.whatsapp.com/send/?phone=918484819808&text=Hey%20there,%20I%20need%20some%20help%20with%20my%20trading%20strategy!"><img src="https://scontent.fdel1-2.fna.fbcdn.net/v/t39.8562-6/302524815_3448899778679909_2843186333341006023_n.png?_nc_cat=104&ccb=1-7&_nc_sid=6825c5&_nc_ohc=7_UWMtlHFasAX8Qpocv&_nc_ht=scontent.fdel1-2.fna&oh=00_AfBjHf1PQEq8b-F25J7oc_gaLXJEbMO3mphy8kVl-YJ_hQ&oe=647F548F" /></a>"""
 st.markdown(whatsapp_string, unsafe_allow_html=True)
 
 
