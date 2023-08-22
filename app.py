@@ -90,6 +90,10 @@ def scrap_data(scrip_name, period):
     err_count = 0
 
     scrip_name = str(scrip_name)
+    
+    data_list = []  # Add this line to create an empty list to store data frames
+    
+    
     df = pd.DataFrame(columns=["DateTime", "Open", "High", "Low", "Close", "Volume"])
 
     final_start = "2015-01-01"
@@ -134,8 +138,10 @@ def scrap_data(scrip_name, period):
                 a, columns=["DateTime", "Open", "High", "Low", "Close", "Volume", "OI"]
             )
             data.drop(columns=["OI"], inplace=True)
+            
+            data_list.append(data)  # Append each data frame to the list
 
-            df = df.append(data)
+            # df = df.append(data)
 
             diff = divmod((dt.datetime.today() - end).total_seconds(), 86400)[0]
 
@@ -145,7 +151,10 @@ def scrap_data(scrip_name, period):
             else:
                 start = end + dt.timedelta(1)
                 end = start + dt.timedelta(60)
-
+                
+    # Concatenate all collected data frames into one
+    df = pd.concat(data_list, ignore_index=True)
+    
     # Transform the DataFrame
     df.insert(1, "Date", 0)
     df.insert(2, "Time", 0)
